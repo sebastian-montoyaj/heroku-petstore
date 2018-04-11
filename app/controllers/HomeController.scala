@@ -7,12 +7,12 @@ import play.api.mvc._
 // Importes necesarios para que nuestra clase funcione
 import play.api.libs.json._
 import models.Pet
-import play.api.db._ // Este es especialmente necesario para conectarse con la BD
+//import play.api.db._ // Este es especialmente necesario para conectarse con la BD
 
 // Controlador de la pagina web
 // NOTA: No olvidar poner >>> db: Database como parametro de la clase. OJO!
 @Singleton
-class HomeController @Inject()(db: Database, cc: ControllerComponents) extends AbstractController(cc) {
+class HomeController @Inject()(cc: ControllerComponents) extends AbstractController(cc) {
   
   // Se crea una lista con algunos elementos de prueba
   var mascotasLista = List[Pet](
@@ -91,6 +91,7 @@ class HomeController @Inject()(db: Database, cc: ControllerComponents) extends A
   
   // ---------------------------------------------------------------------
   
+  /*
   // Se crea una lista vacia para manejar los datos que llegan de la BD
   var mascotas = List[Pet]()
   
@@ -209,6 +210,8 @@ class HomeController @Inject()(db: Database, cc: ControllerComponents) extends A
       case e:JsError => BadRequest("No se pudo actualizar porque hay malos parametros!!")
     }
   }
+  
+  */
   
   // Metodo para invocar la pagina de inicio de nuestro sitio web
   def index() = Action { implicit request: Request[AnyContent] =>
