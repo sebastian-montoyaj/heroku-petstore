@@ -7,12 +7,12 @@ import play.api.mvc._
 // Importes necesarios para que nuestra clase funcione
 import play.api.libs.json._
 import models.Pet
-//import play.api.db._ // Este es especialmente necesario para conectarse con la BD
+import play.api.db._ // Este es especialmente necesario para conectarse con la BD
 
 // Controlador de la pagina web
 // NOTA: No olvidar poner >>> db: Database como parametro de la clase. OJO!
 @Singleton
-class HomeController @Inject()(cc: ControllerComponents) extends AbstractController(cc) {
+class HomeController @Inject()(db: Database, cc: ControllerComponents) extends AbstractController(cc) {
   
   // Se crea una lista con algunos elementos de prueba
   var mascotasLista = List[Pet](
@@ -91,7 +91,7 @@ class HomeController @Inject()(cc: ControllerComponents) extends AbstractControl
   
   // ---------------------------------------------------------------------
   
-  /*
+  
   // Se crea una lista vacia para manejar los datos que llegan de la BD
   var mascotas = List[Pet]()
   
@@ -123,6 +123,7 @@ class HomeController @Inject()(cc: ControllerComponents) extends AbstractControl
     Ok(jsonAux) // Y se retorna la lista de mascotas Jsificada
   }
   
+  /*
   // Método para eliminar la mascota indicada de la BD
   def removerMascotaSQL(id: Int) = Action {
     // En primer lugar creamos una variable para realizar la conexion con la BD
