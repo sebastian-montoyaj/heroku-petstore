@@ -123,7 +123,6 @@ class HomeController @Inject()(db: Database, cc: ControllerComponents) extends A
     Ok(jsonAux) // Y se retorna la lista de mascotas Jsificada
   }
   
-  /*
   // Método para eliminar la mascota indicada de la BD
   def removerMascotaSQL(id: Int) = Action {
     // En primer lugar creamos una variable para realizar la conexion con la BD
@@ -211,8 +210,6 @@ class HomeController @Inject()(db: Database, cc: ControllerComponents) extends A
       case e:JsError => BadRequest("No se pudo actualizar porque hay malos parametros!!")
     }
   }
-  
-  */
   
   // Metodo para invocar la pagina de inicio de nuestro sitio web
   def index() = Action { implicit request: Request[AnyContent] =>
